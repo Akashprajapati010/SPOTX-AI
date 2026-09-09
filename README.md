@@ -23,6 +23,14 @@ The platform includes features like:
 
 ---
 
+## 👥 For Live Demo 
+
+<a href="https://spotx-ai.vercel.app/" target="_blank">
+  <img src="https://img.shields.io/badge/Live%20Demo-Click%20Here-brightgreen" alt="Live Demo">
+</a>
+
+---
+
 # 🚀 Features
 
 ## 👤 User Features
