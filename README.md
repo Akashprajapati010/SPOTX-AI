@@ -286,15 +286,6 @@ The Explore Page allows users to:
 
 ---
 
-# 👨‍💻 Team Members
-
-* Akash Prajapati (Team Leader)
-* Aakash Tiwari
-* Adnan Baig
-* Abhimanyu Patel
-
----
-
 # 🎓 Academic Information
 
 **Project Title:**
