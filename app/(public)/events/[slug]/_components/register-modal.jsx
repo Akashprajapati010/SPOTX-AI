@@ -33,27 +33,108 @@ export default function RegisterModal({ event, isOpen, onClose }) {
     api.registrations.registerForEvent
   );
 
+// change this for registration payment 
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+
+  //   if (!name.trim() || !email.trim()) {
+  //     toast.error("Please fill in all fields");
+  //     return;
+  //   }
+
+  //   try {
+  //     await registerForEvent({
+  //       eventId: event._id,
+  //       attendeeName: name,
+  //       attendeeEmail: email,
+  //     });
+
+  //     setIsSuccess(true);
+  //     toast.success("Registration successful! 🎉");
+  //   } catch (error) {
+  //     toast.error(error.message || "Registration failed");
+  //   }
+  // };
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
-    if (!name.trim() || !email.trim()) {
-      toast.error("Please fill in all fields");
-      return;
-    }
+  if (!name.trim() || !email.trim()) {
+    toast.error("Please fill in all fields");
+    return;
+  }
 
-    try {
+  try {
+    // ✅ FREE EVENT
+    if (event.ticketType === "free") {
       await registerForEvent({
         eventId: event._id,
         attendeeName: name,
         attendeeEmail: email,
+        isPaid: false,
+        paymentStatus: "completed",
       });
 
       setIsSuccess(true);
       toast.success("Registration successful! 🎉");
-    } catch (error) {
-      toast.error(error.message || "Registration failed");
+    } 
+    
+    // 💳 PAID EVENT → RAZORPAY
+    else {
+      const res = await fetch("/api/create-razorpay-order", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ event }),
+      });
+
+      const order = await res.json();
+
+      const options = {
+        key: process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID,
+        amount: order.amount,
+        currency: "INR",
+        name: event.title,
+        description: "Event Registration",
+        order_id: order.id,
+
+        handler: async function (response) {
+          try {
+            await registerForEvent({
+              eventId: event._id,
+              attendeeName: name,
+              attendeeEmail: email,
+              isPaid: true,
+              paymentStatus: "completed",
+              paymentId: response.razorpay_payment_id,
+            });
+
+            setIsSuccess(true);
+            toast.success("Payment Successful 🎉");
+          } catch (err) {
+            toast.error("Registration failed after payment");
+          }
+        },
+
+        prefill: {
+          name: name,
+          email: email,
+        },
+
+        theme: {
+          color: "#6366f1",
+        },
+      };
+
+      const rzp = new window.Razorpay(options);
+      rzp.open();
     }
-  };
+
+  } catch (error) {
+    toast.error(error.message || "Something went wrong");
+  }
+};
 
   const handleViewTicket = () => {
     router.push("/my-tickets");
@@ -92,6 +173,43 @@ export default function RegisterModal({ event, isOpen, onClose }) {
     );
   }
 
+//   if (isSuccess) {
+//   return (
+//     <Dialog open={isOpen} onOpenChange={onClose}>
+//       <DialogContent className="sm:max-w-md">
+
+//         {/* ✅ ADD THIS */}
+//         <DialogHeader>
+//           <DialogTitle>You’re All Set!</DialogTitle>
+//           <DialogDescription>
+//             Your registration is confirmed. Check your tickets for details.
+//           </DialogDescription>
+//         </DialogHeader>
+
+//         <div className="flex flex-col items-center text-center space-y-4 py-4">
+//           <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+//             <CheckCircle className="w-8 h-8 text-green-600" />
+//           </div>
+
+//           <Separator />
+
+//           <div className="w-full space-y-2">
+//             <Button className="w-full gap-2" onClick={handleViewTicket}>
+//               <Ticket className="w-4 h-4" />
+//               View My Ticket
+//             </Button>
+
+//             <Button variant="outline" className="w-full" onClick={onClose}>
+//               Close
+//             </Button>
+//           </div>
+//         </div>
+
+//       </DialogContent>
+//     </Dialog>
+//   );
+// }
+
   // Registration form
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -113,7 +231,7 @@ export default function RegisterModal({ event, isOpen, onClose }) {
               ) : (
                 <span>
                   Price: ₹{event.ticketPrice}{" "}
-                  <span className="text-xs">(Pay at venue)</span>
+                  <span className="text-xs text-blue-500">(Online Payment)</span>
                 </span>
               )}
             </p>

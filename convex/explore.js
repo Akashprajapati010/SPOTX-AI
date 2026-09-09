@@ -25,6 +25,44 @@ export const getFeaturedEvents = query({
 });
 
 // Get events by location (city/state)
+// export const getEventsByLocation = query({
+//   args: {
+//     city: v.optional(v.string()),
+//     state: v.optional(v.string()),
+//     limit: v.optional(v.number()),
+//   },
+//   handler: async (ctx, args) => {
+//     const now = Date.now();
+
+//     let events = await ctx.db
+//       .query("events")
+//       .withIndex("by_start_date")
+//       .filter((q) => q.gte(q.field("startDate"), now))
+//       .collect();
+
+//     let filtered = events;
+
+//     // ✅ filter by city
+//     if (args.city) {
+//       filtered = events.filter(
+//         (e) =>
+//           e.city?.toLowerCase() === args.city.toLowerCase()
+//       );
+//     }
+//     // ✅ filter by state
+//     else if (args.state) {
+//       filtered = events.filter(
+//         (e) =>
+//           e.state?.toLowerCase() === args.state.toLowerCase()
+//       );
+//     }
+
+//     // ✅ NO FALLBACK
+//     return filtered.slice(0, args.limit ?? 4);
+//   },
+// });
+// Get popular events (high registration count)
+
 export const getEventsByLocation = query({
   args: {
     city: v.optional(v.string()),
@@ -32,38 +70,32 @@ export const getEventsByLocation = query({
     limit: v.optional(v.number()),
   },
   handler: async (ctx, args) => {
-    const now = Date.now();
-
     let events = await ctx.db
       .query("events")
       .withIndex("by_start_date")
-      .filter((q) => q.gte(q.field("startDate"), now))
-      .collect();
+      .collect(); // ✅ NO DATE FILTER
 
-    // Filter by city or state
-   let filtered = events;
+    let filtered = events;
 
-// filter by city/state
-if (args.city) {
-  filtered = events.filter(
-    (e) => e.city.toLowerCase() === args.city.toLowerCase()
-  );
-} else if (args.state) {
-  filtered = events.filter(
-    (e) => e.state?.toLowerCase() === args.state.toLowerCase()
-  );
-}
+    // ✅ filter by city
+    if (args.city) {
+      filtered = events.filter(
+        (e) =>
+          e.city?.toLowerCase() === args.city.toLowerCase()
+      );
+    }
+    // ✅ filter by state
+    else if (args.state) {
+      filtered = events.filter(
+        (e) =>
+          e.state?.toLowerCase() === args.state.toLowerCase()
+      );
+    }
 
-// 🔥 fallback if no events found
-if (filtered.length === 0) {
-  return events.slice(0, args.limit ?? 4);
-}
-
-return filtered.slice(0, args.limit ?? 4);
+    return filtered.slice(0, args.limit ?? 50); // increase limit if needed
   },
 });
 
-// Get popular events (high registration count)
 export const getPopularEvents = query({
   args: {
     limit: v.optional(v.number()),
@@ -96,7 +128,7 @@ export const getEventsByCategory = query({
     const events = await ctx.db
       .query("events")
       .withIndex("by_category", (q) => q.eq("category", args.category))
-      .filter((q) => q.gte(q.field("startDate"), now))
+      // .filter((q) => q.gte(q.field("startDate"), now))
       .collect();
 
     return events.slice(0, args.limit ?? 12);

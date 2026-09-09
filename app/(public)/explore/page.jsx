@@ -29,6 +29,7 @@ export default function ExplorePage() {
 
   // Fetch current user for location
   const { data: currentUser } = useConvexQuery(api.users.getCurrentUser);
+  const userInterests = currentUser?.interests || [];
 
   // Fetch events
   const { data: featuredEvents, isLoading: loadingFeatured } = useConvexQuery(
@@ -39,16 +40,19 @@ export default function ExplorePage() {
   const { data: localEvents, isLoading: loadingLocal } = useConvexQuery(
     api.explore.getEventsByLocation,
     {
-      city: currentUser?.location?.city || "Gurugram",
-      state: currentUser?.location?.state || "Haryana",
+      city: currentUser?.location?.city || "Bhopal",
+      state: currentUser?.location?.state || "Madhya Pradesh",
       limit: 4,
     }
   );
 
-  const { data: popularEvents, isLoading: loadingPopular } = useConvexQuery(
-    api.explore.getPopularEvents,
-    { limit: 6 }
-  );
+  // const { data: popularEvents, isLoading: loadingPopular } = useConvexQuery(
+  //   api.explore.getPopularEvents,
+  //   { limit: 6 }
+  // );
+  const { data: filteredEvents, isLoading: loadingFiltered } = useConvexQuery(
+  api.events.getFilteredEvents
+);
 
   const { data: categoryCounts } = useConvexQuery(
     api.explore.getCategoryCounts
@@ -76,7 +80,8 @@ export default function ExplorePage() {
   }));
 
   // Loading state
-  const isLoading = loadingFeatured || loadingLocal || loadingPopular;
+  // const isLoading = loadingFeatured || loadingLocal || loadingPopular;
+  const isLoading = loadingFeatured || loadingLocal || loadingFiltered;
 
   if (isLoading) {
     return (
@@ -281,15 +286,20 @@ export default function ExplorePage() {
       </div>
 
       {/* Popular Events Across Country */}
-      {popularEvents && popularEvents.length > 0 && (
+      {/* {popularEvents && popularEvents.length > 0 &&  */}
+
+      {filteredEvents && filteredEvents.length > 0 && (
         <div className="mb-16">
           <div className="mb-6">
-            <h2 className="text-3xl font-bold mb-1">Popular Across India</h2>
-            <p className="text-muted-foreground">Trending events nationwide</p>
+            {/* <h2 className="text-3xl font-bold mb-1">Popular Across India</h2>
+            <p className="text-muted-foreground">Trending events nationwide</p> */}
+            <h2 className="text-3xl font-bold mb-1">Recommended For You</h2>
+            <p className="text-muted-foreground">Based on your interests</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {popularEvents.map((event) => (
+            {/* {popularEvents.map((event) => ( */}
+            {filteredEvents.map((event) => (
               <EventCard
                 key={event._id}
                 event={event}
@@ -303,11 +313,11 @@ export default function ExplorePage() {
 
       {/* Empty State */}
       {!loadingFeatured &&
-        !loadingLocal &&
-        !loadingPopular &&
-        (!featuredEvents || featuredEvents.length === 0) &&
-        (!localEvents || localEvents.length === 0) &&
-        (!popularEvents || popularEvents.length === 0) && (
+  !loadingLocal &&
+  !loadingFiltered &&
+  (!featuredEvents || featuredEvents.length === 0) &&
+  (!localEvents || localEvents.length === 0) &&
+  (!filteredEvents || filteredEvents.length === 0) && (
           <Card className="p-12 text-center">
             <div className="max-w-md mx-auto space-y-4">
               <div className="text-6xl mb-4">🎉</div>

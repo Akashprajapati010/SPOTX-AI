@@ -8,12 +8,75 @@ function generateQRCode() {
 }
 
 // Register for an event
+// export const registerForEvent = mutation({
+//   args: {
+//     eventId: v.id("events"),
+//     attendeeName: v.string(),
+//     attendeeEmail: v.string(),
+//   },
+//   handler: async (ctx, args) => {
+//     const user = await ctx.runQuery(internal.users.getCurrentUser);
+
+//     const event = await ctx.db.get(args.eventId);
+//     if (!event) {
+//       throw new Error("Event not found");
+//     }
+
+//     // Check if event is full
+//     if (event.registrationCount >= event.capacity) {
+//       throw new Error("Event is full");
+//     }
+
+//     // Check if user already registered
+//     const existingRegistration = await ctx.db
+//       .query("registrations")
+//       .withIndex("by_event_user", (q) =>
+//         q.eq("eventId", args.eventId).eq("userId", user._id)
+//       )
+//       .unique();
+
+//     if (existingRegistration) {
+//       throw new Error("You are already registered for this event");
+//     }
+
+//     // Create registration
+//     const qrCode = generateQRCode();
+//     const registrationId = await ctx.db.insert("registrations", {
+//       eventId: args.eventId,
+//       userId: user._id,
+//       attendeeName: args.attendeeName,
+//       attendeeEmail: args.attendeeEmail,
+//       qrCode: qrCode,
+//       checkedIn: false,
+//       status: "confirmed",
+//       registeredAt: Date.now(),
+//     });
+
+//     // Update event registration count
+//     await ctx.db.patch(args.eventId, {
+//       registrationCount: event.registrationCount + 1,
+//     });
+
+//     return registrationId;
+//   },
+// });
+
 export const registerForEvent = mutation({
   args: {
     eventId: v.id("events"),
     attendeeName: v.string(),
     attendeeEmail: v.string(),
+
+    // ✅ NEW (payment support)
+    isPaid: v.boolean(),
+    paymentStatus: v.union(
+      v.literal("pending"),
+      v.literal("completed"),
+      v.literal("failed")
+    ),
+    paymentId: v.optional(v.string()),
   },
+
   handler: async (ctx, args) => {
     const user = await ctx.runQuery(internal.users.getCurrentUser);
 
@@ -22,12 +85,12 @@ export const registerForEvent = mutation({
       throw new Error("Event not found");
     }
 
-    // Check if event is full
+    // 🚫 Event full check
     if (event.registrationCount >= event.capacity) {
       throw new Error("Event is full");
     }
 
-    // Check if user already registered
+    // 🚫 Duplicate check
     const existingRegistration = await ctx.db
       .query("registrations")
       .withIndex("by_event_user", (q) =>
@@ -39,20 +102,32 @@ export const registerForEvent = mutation({
       throw new Error("You are already registered for this event");
     }
 
-    // Create registration
+    // ⚠️ Payment validation (IMPORTANT)
+    if (event.ticketType === "paid" && args.paymentStatus !== "completed") {
+      throw new Error("Payment not completed");
+    }
+
+    // 🎟️ Create registration
     const qrCode = generateQRCode();
+
     const registrationId = await ctx.db.insert("registrations", {
       eventId: args.eventId,
       userId: user._id,
       attendeeName: args.attendeeName,
       attendeeEmail: args.attendeeEmail,
+
+      // ✅ Payment fields
+      isPaid: args.isPaid,
+      paymentStatus: args.paymentStatus,
+      paymentId: args.paymentId,
+
       qrCode: qrCode,
       checkedIn: false,
       status: "confirmed",
       registeredAt: Date.now(),
     });
 
-    // Update event registration count
+    // 📊 Update count
     await ctx.db.patch(args.eventId, {
       registrationCount: event.registrationCount + 1,
     });

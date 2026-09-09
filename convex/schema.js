@@ -78,29 +78,67 @@ export default defineSchema({
         .searchIndex("search_title", { searchField:"title"}),
 
      // For SEO-friendly URLs
-    registrations : defineTable({
-    eventId: v.id("events"),
-    userId: v.id("users"),
+//     registrations : defineTable({
+//     eventId: v.id("events"),
+//     userId: v.id("users"),
 
-    //Attendee info
-    attendeeName: v.string(),
-    attendeeEmail: v.string(),
+//     //Attendee info
+//     attendeeName: v.string(),
+//     attendeeEmail: v.string(),
 
-    //Or Code for entry 
-    qrCode: v.string(),
+//     //Or Code for entry 
+//     qrCode: v.string(),
 
-    //Check-in status
-    checkedIn: v.boolean(),
-    checkedInAt: v.optional(v.number()),
+//     //Check-in status
+//     checkedIn: v.boolean(),
+//     checkedInAt: v.optional(v.number()),
 
-    //status
-    status: v.union(v.literal("confirmed"), v.literal("cancelled")),
+//     //status
+//     status: v.union(v.literal("confirmed"), v.literal("cancelled")),
 
-    registeredAt: v.number(),
+//     registeredAt: v.number(),
 
-  }).index("by_event", ["eventId"])
-    .index("by_user", ["userId"])
-    .index("by_event_user", ["eventId", "userId"])
-    .index("by_qr_code", ["qrCode"]),
+//   }).index("by_event", ["eventId"])
+//     .index("by_user", ["userId"])
+//     .index("by_event_user", ["eventId", "userId"])
+//     .index("by_qr_code", ["qrCode"]),
+
+registrations: defineTable({
+  eventId: v.id("events"),
+  userId: v.id("users"),
+
+  // Attendee info
+  attendeeName: v.string(),
+  attendeeEmail: v.string(),
+
+  // Payment Info (✅ NEW)
+  isPaid: v.boolean(), // true for paid events
+  paymentId: v.optional(v.string()), // Stripe payment id
+  paymentStatus: v.union(
+    v.literal("pending"),
+    v.literal("completed"),
+    v.literal("failed")
+  ),
+
+  // QR Code
+  qrCode: v.string(),
+
+  // Check-in
+  checkedIn: v.boolean(),
+  checkedInAt: v.optional(v.number()),
+
+  // Status
+  status: v.union(
+    v.literal("confirmed"),
+    v.literal("cancelled")
+  ),
+
+  registeredAt: v.number(),
+
+})
+.index("by_event", ["eventId"])
+.index("by_user", ["userId"])
+.index("by_event_user", ["eventId", "userId"])
+.index("by_qr_code", ["qrCode"]),
 
 });

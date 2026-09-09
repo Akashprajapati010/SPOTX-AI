@@ -46,25 +46,41 @@ export const store = mutation({
 });
 
 
+// export const getCurrentUser = query({
+//     handler: async (ctx) => {
+//         const identity = await ctx.auth.getUserIdentity();
+//         if (!identity) {
+//             return null;
+//         }
+
+//         const user = await ctx.db
+//         .query("users")
+//         .withIndex("by_token", (q) =>
+//           q.eq("tokenIdentifier", identity.tokenIdentifier),
+//         )
+//         .unique();
+
+//         if (!user){
+//             throw new Error("User not found in database");
+//         }
+//         return user;
+//     },
+// });
 export const getCurrentUser = query({
-    handler: async (ctx) => {
-        const identity = await ctx.auth.getUserIdentity();
-        if (!identity) {
-            return null;
-        }
+  handler: async (ctx) => {
+    const identity = await ctx.auth.getUserIdentity();
 
-        const user = await ctx.db
-        .query("users")
-        .withIndex("by_token", (q) =>
-          q.eq("tokenIdentifier", identity.tokenIdentifier),
-        )
-        .unique();
+    if (!identity) return null;
 
-        if (!user){
-            throw new Error("User not found in database");
-        }
-        return user;
-    },
+    const user = await ctx.db
+      .query("users")
+      .withIndex("by_token", (q) =>
+        q.eq("tokenIdentifier", identity.tokenIdentifier)
+      )
+      .unique();
+
+    return user; // ❌ no insert here
+  },
 });
 
 export const completeOnboarding = mutation({

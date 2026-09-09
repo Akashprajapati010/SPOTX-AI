@@ -134,3 +134,64 @@ export const deleteEvent = mutation({
     return { success: true };
   },
 });
+
+export const getFilteredEvents = query({
+  args: {},
+  handler: async (ctx) => {
+    const user = await ctx.runQuery(internal.users.getCurrentUser);
+
+    let events = await ctx.db.query("events").collect();
+
+    if (!user) return events;
+
+    // 🔥 Step 1: Filter by category
+    let filtered = events;
+
+    if (user.interests?.length > 0) {
+      filtered = filtered.filter((event) =>
+        user.interests.includes(event.category)
+      );
+    }
+
+    // 🔥 Step 2: Filter by location (city)
+    if (user.location?.city) {
+      const locationFiltered = filtered.filter(
+        (event) => event.city === user.location.city
+      );
+
+      // ✅ If location match found → return it
+      if (locationFiltered.length > 0) {
+        return locationFiltered;
+      }
+    }
+
+    // 🔁 Step 3: fallback to category-only
+    if (filtered.length > 0) {
+      return filtered;
+    }
+
+    // 🔁 Step 4: final fallback → all events
+    return events;
+  },
+});
+
+// export const getFilteredEvents = query({
+
+//   args: {},
+//   handler: async (ctx) => {
+//     // 👤 Get current user
+//     const user = await ctx.runQuery(internal.users.getCurrentUser);
+
+//     // 📦 Get all events
+//     let events = await ctx.db.query("events").collect();
+
+//     // 🎯 Filter by user interests (category)
+//     if (user?.interests && user.interests.length > 0) {
+//       events = events.filter((event) =>
+//         user.interests.includes(event.category)
+//       );
+//     }
+
+//     return events;
+//   },
+// });
