@@ -2,8 +2,7 @@ import Razorpay from "razorpay";
 import { NextResponse } from "next/server";
 
 // ✅ Debug logs OUTSIDE object
-console.log("KEY_ID:", process.env.RAZORPAY_KEY_ID);
-console.log("KEY_SECRET:", process.env.RAZORPAY_KEY_SECRET);
+
 
 const razorpay = new Razorpay({
   key_id: process.env.RAZORPAY_KEY_ID,
