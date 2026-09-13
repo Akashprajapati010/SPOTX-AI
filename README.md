@@ -272,7 +272,7 @@ The Explore Page allows users to:
 </p>
 
 
-### 📊 Industry Analysis Insights
+### 📊 Interests & Location-wise Event
 
 <p align="center">
   <img src="public/Image/Screenshot 2025-12-20 230053.png" width="32%"/>
@@ -281,7 +281,7 @@ The Explore Page allows users to:
 </p>
 
 
-### 📄 AI Resume Builder
+### 📄 Explore Upcoming Events
 
 <p align="center">
   <img src="public/Image/Screenshot 2025-12-20 230524.png" width="32%"/>
@@ -290,7 +290,7 @@ The Explore Page allows users to:
 </p>
 
 
-### 🎯 Mock Interview
+### 🎯 Event Detail & Registration Page
 
 <p align="center">
   <img src="public/Image/Screenshot 2025-12-20 225547.png" width="32%"/>
@@ -299,7 +299,34 @@ The Explore Page allows users to:
 </p>
 
 
-### 📨 AI Cover Letter Generator
+### 📨 My Ticket page
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
+</p>
+
+
+### 📄 Create Event With AI Page
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
+</p>
+
+
+### 📨 My Events page
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
+</p>
+
+
+### 📄 Subscription Page For Unlimited Event Creation
 
 <p align="center">
   <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
