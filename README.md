@@ -169,16 +169,19 @@ SPOTX uses Generative AI to automate event creation.
 ---
 
 ## 🎥 Demo Video
-### 👇 Click the image below to watch the project presentation video.
-
+<h2 align="center">🎥 SPOTX-AI — Project Demo</h2>
 <p align="center">
   <a href="https://www.youtube.com/watch?v=WKO7Choj-sU" target="_blank">
     <img
-      src="https://i.ytimg.com/vi/WKO7Choj-sU/maxresdefault.jpg"
+      src="https://i.ytimg.com/vi/WKO7Choj-sU/hqdefault.jpg"
       alt="SPOTX - AI-Powered Event Planning Platform Demo"
       width="80%"
     />
   </a>
+</p>
+
+<p align="center">
+  ▶️ <strong>Click the thumbnail to watch the SPOTX-AI Demo Video</strong>
 </p>
 
 ---
