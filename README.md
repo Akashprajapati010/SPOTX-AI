@@ -162,6 +162,17 @@ SPOTX uses Generative AI to automate event creation.
 
 ---
 
+## 🎥 Demo Video
+### 👇 Click the image below to watch the project presentation video.
+
+<p align="center">
+  <a href="https://youtu.be/86zvmrK6LwI" target="_blank">
+    <img src="https://img.youtube.com/vi/86zvmrK6LwI/0.jpg" alt="SkillSmart Demo Video" width="60%" />
+  </a>
+</p>
+
+---
+
 # 🛠️ Tech Stack
 
 ## Frontend
@@ -333,17 +344,6 @@ The Explore Page allows users to:
 * Browse category-wise events
 * Get AI-based personalized recommendations
 * View upcoming and trending events
-
----
-
-## 🎥 Demo Video
-### 👇 Click the image below to watch the project presentation video.
-
-<p align="center">
-  <a href="https://youtu.be/86zvmrK6LwI" target="_blank">
-    <img src="https://img.youtube.com/vi/86zvmrK6LwI/0.jpg" alt="SkillSmart Demo Video" width="60%" />
-  </a>
-</p>
 
 ---
 
