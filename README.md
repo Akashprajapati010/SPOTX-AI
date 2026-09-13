@@ -258,9 +258,8 @@ The Explore Page allows users to:
 ### 🏠 Home Page
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20224724.png" width="32%"/>
-  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20230315.png" width="32%"/>
-  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20224837.png" width="32%"/>
+  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20224724.png" width="42%"/>
+  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20230315.png" width="42%"/>
 </p>
 
 
