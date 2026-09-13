@@ -80,6 +80,88 @@ SPOTX uses Generative AI to automate event creation.
 
 ---
 
+## 🖼️ Project Screenshots
+### 🏠 Home Page
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20224724.png" width="42%"/>
+  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20230315.png" width="42%"/>
+</p>
+
+
+### 🔐 SignIn and SignUp
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 224915.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225017.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225734.png" width="32%"/>
+</p>
+
+
+### 📊 Interests & Location-wise Event
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 230053.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 230124.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 230148.png" width="32%"/>
+</p>
+
+
+### 📄 Explore Upcoming Events
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 230524.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 230851.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 230948.png" width="32%"/>
+</p>
+
+
+### 🎯 Event Detail & Registration Page
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 225547.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225610.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225650.png" width="32%"/>
+</p>
+
+
+### 📨 My Ticket page
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
+</p>
+
+
+### 📄 Create Event With AI Page
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
+</p>
+
+
+### 📨 My Events page
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
+</p>
+
+
+### 📄 Subscription Page For Unlimited Event Creation
+
+<p align="center">
+  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
+  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
+</p>
+
+---
+
 # 🛠️ Tech Stack
 
 ## Frontend
@@ -251,88 +333,6 @@ The Explore Page allows users to:
 * Browse category-wise events
 * Get AI-based personalized recommendations
 * View upcoming and trending events
-
----
-
-## 🖼️ Project Screenshots
-### 🏠 Home Page
-
-<p align="center">
-  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20224724.png" width="42%"/>
-  <img src="https://raw.githubusercontent.com/Akashprajapati010/CareerX-AI-Coach/0a01f10a0beb9afc4347347b9c95e6d3b8930eb9/public/Image/Screenshot%202025-12-20%20230315.png" width="42%"/>
-</p>
-
-
-### 🔐 SignIn and SignUp
-
-<p align="center">
-  <img src="public/Image/Screenshot 2025-12-20 224915.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225017.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225734.png" width="32%"/>
-</p>
-
-
-### 📊 Interests & Location-wise Event
-
-<p align="center">
-  <img src="public/Image/Screenshot 2025-12-20 230053.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 230124.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 230148.png" width="32%"/>
-</p>
-
-
-### 📄 Explore Upcoming Events
-
-<p align="center">
-  <img src="public/Image/Screenshot 2025-12-20 230524.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 230851.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 230948.png" width="32%"/>
-</p>
-
-
-### 🎯 Event Detail & Registration Page
-
-<p align="center">
-  <img src="public/Image/Screenshot 2025-12-20 225547.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225610.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225650.png" width="32%"/>
-</p>
-
-
-### 📨 My Ticket page
-
-<p align="center">
-  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
-</p>
-
-
-### 📄 Create Event With AI Page
-
-<p align="center">
-  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
-</p>
-
-
-### 📨 My Events page
-
-<p align="center">
-  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
-</p>
-
-
-### 📄 Subscription Page For Unlimited Event Creation
-
-<p align="center">
-  <img src="public/Image/Screenshot 2025-12-20 225414.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225439.png" width="32%"/>
-  <img src="public/Image/Screenshot 2025-12-20 225515.png" width="32%"/>
-</p>
 
 ---
 
