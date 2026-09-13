@@ -94,7 +94,7 @@ SPOTX uses Generative AI to automate event creation.
 
 <p align="center">
   <img src="public/Image/1.4.png" width="32%"/>
-  <img src="public/Image/2.1.png" width="32%"/>
+  <img src="public/Image/2.1.png" width="32%" height="85%"/>
   <img src="public/Image/2.2.png" width="32%"/>
 </p>
 
