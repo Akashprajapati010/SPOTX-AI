@@ -172,8 +172,12 @@ SPOTX uses Generative AI to automate event creation.
 ### 👇 Click the image below to watch the project presentation video.
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?v=WKO7Choj-sU" target="_blank">
-    <img src="https://img.youtube.com/vi/86zvmrK6LwI/0.jpg" alt="SPOTX - AI Demo Video" width="60%" />
+  <a href="https://www.youtube.com/watch?v=86zvmrK6LwI" target="_blank">
+    <img 
+      src="https://img.youtube.com/vi/86zvmrK6LwI/0.jpg" 
+      alt="SkillSmart - AI-Based Competency Assessment Demo Video" 
+      width="80%"
+    />
   </a>
 </p>
 
