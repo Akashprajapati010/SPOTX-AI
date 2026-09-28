@@ -9,7 +9,7 @@
 
 ## 📌 Project Overview
 
-SPOTX is an AI-powered event planning and promotion platform designed to simplify event management for both organizers and attendees. The platform helps organizers create, manage, and promote events using Generative AI, while users can discover personalized events based on their interests and location.
+SPOTX is an AI-powered event planning and promotion platform designed to simplify event management for both organizers and attendees. This platform helps organizers create, manage, and promote events using Generative AI, while users can discover personalized events based on their interests and location.
 
 The platform includes features like:
 
